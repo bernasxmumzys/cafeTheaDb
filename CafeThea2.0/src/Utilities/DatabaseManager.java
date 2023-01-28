@@ -31,9 +31,31 @@ public class DatabaseManager {
             e.printStackTrace();
         }
     }
+    
     public void deleteDatabase(String dbName) {
         try {
             cursor.execute("drop database "+dbName);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void insertInto(String query) {
+        try {
+            String column = "(";                                               
+            String values = "(";
+            int colCount = 0;
+            int valCount = 0;
+            //no kwargs no layf
+        } catch (Exception e) {
+            
+        }
+    }
+    
+    public void useDatabase(String dbName) {
+        try {
+            cursor.execute("use database "+dbName);
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -58,6 +80,10 @@ public class DatabaseManager {
         catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    private String regexQuery(String query) {
+        return null;
     }
     
     public class DatabaseSetup {
@@ -126,7 +152,5 @@ public class DatabaseManager {
     
     public static void main(String args[]) {
         DatabaseManager cafeTheaDb = new DatabaseManager();
-        cafeTheaDb.createDatabase("test");
-        cafeTheaDb.deleteDatabase("test");
     }
 }
