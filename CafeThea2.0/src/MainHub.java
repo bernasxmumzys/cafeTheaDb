@@ -9,6 +9,8 @@
  * @author Bryce
  */
 public class MainHub extends javax.swing.JFrame {
+    
+    Database db = new Database();
 
     /**
      * Creates new form MainHub
@@ -68,9 +70,19 @@ public class MainHub extends javax.swing.JFrame {
 
         manageOrdersBtn.setText("<html><center>"+"Manage Orders & Services"+"</center></html>");
         manageOrdersBtn.setPreferredSize(new java.awt.Dimension(120, 80));
+        manageOrdersBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageOrdersBtnActionPerformed(evt);
+            }
+        });
 
         manageDataBtn.setText("<html><center>"+"Manage Database"+"</center></html>");
         manageDataBtn.setPreferredSize(new java.awt.Dimension(120, 80));
+        manageDataBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageDataBtnActionPerformed(evt);
+            }
+        });
 
         reqSupplyBtn.setText("<html><center>"+"Request Supplies"+"</center></html>");
         reqSupplyBtn.setPreferredSize(new java.awt.Dimension(120, 80));
@@ -128,6 +140,17 @@ public class MainHub extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void manageDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageDataBtnActionPerformed
+        // TODO add your handling code here:
+        db.show();
+    }//GEN-LAST:event_manageDataBtnActionPerformed
+
+    private void manageOrdersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrdersBtnActionPerformed
+        // TODO add your handling code here:
+        db.show();
+        db.showOrders();
+    }//GEN-LAST:event_manageOrdersBtnActionPerformed
 
     /**
      * @param args the command line arguments
