@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.event.WindowListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -303,6 +304,19 @@ public class Database extends javax.swing.JFrame {
         inventPanel.setVisible(false);
     }//GEN-LAST:event_ordersSummBtnActionPerformed
 
+    public void showOrders(){
+        ordersPanel.setVisible(true);
+        inventPanel.setVisible(false);
+    }
+
+    @Override
+    public void setDefaultCloseOperation(int operation) {
+        super.setDefaultCloseOperation(HIDE_ON_CLOSE); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+    
+    
+    
     /**
      * @param args the command line arguments
      */
