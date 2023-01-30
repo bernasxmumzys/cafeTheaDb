@@ -28,9 +28,8 @@ public class MainHub extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         ordersTable = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        currentOrders = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        manageOrdersBtn = new javax.swing.JButton();
         manageDataBtn = new javax.swing.JButton();
         reqSupplyBtn = new javax.swing.JButton();
         viewTransacsBtn = new javax.swing.JButton();
@@ -47,7 +46,7 @@ public class MainHub extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(250, 250));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        currentOrders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,10 +54,18 @@ public class MainHub extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Client", "Orders", "Time", "Status"
             }
-        ));
-        ordersTable.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ordersTable.setViewportView(currentOrders);
 
         jPanel1.add(ordersTable, java.awt.BorderLayout.CENTER);
 
@@ -66,11 +73,13 @@ public class MainHub extends javax.swing.JFrame {
 
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 400));
 
-        manageOrdersBtn.setText("<html><center>"+"Manage Orders & Services"+"</center></html>");
-        manageOrdersBtn.setPreferredSize(new java.awt.Dimension(120, 80));
-
         manageDataBtn.setText("<html><center>"+"Manage Database"+"</center></html>");
         manageDataBtn.setPreferredSize(new java.awt.Dimension(120, 80));
+        manageDataBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageDataBtnActionPerformed(evt);
+            }
+        });
 
         reqSupplyBtn.setText("<html><center>"+"Request Supplies"+"</center></html>");
         reqSupplyBtn.setPreferredSize(new java.awt.Dimension(120, 80));
@@ -98,10 +107,9 @@ public class MainHub extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(manageOrdersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(138, 138, 138)
                         .addComponent(manageDataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(reqSupplyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addComponent(viewTransacsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,7 +125,6 @@ public class MainHub extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(manageOrdersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(manageDataBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(reqSupplyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewTransacsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -128,6 +135,13 @@ public class MainHub extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void manageDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageDataBtnActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        Database database = new Database();
+        database.show();
+    }//GEN-LAST:event_manageDataBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,14 +179,13 @@ public class MainHub extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable currentOrders;
     private javax.swing.JTextArea expOrdersTA;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton manageDataBtn;
-    private javax.swing.JButton manageOrdersBtn;
     private javax.swing.JScrollPane ordersTable;
     private javax.swing.JButton reqSupplyBtn;
     private javax.swing.JTextArea schedScreenTA;

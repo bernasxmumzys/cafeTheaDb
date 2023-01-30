@@ -119,7 +119,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -129,8 +129,8 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (userField.getText().equals("admin") && passField.getText().equals("pass")){
             dispose();
-            MainHub mainhub = new MainHub();
-            mainhub.show();
+            DailyOrders transac = new DailyOrders();
+            transac.show();
         }
             
     }//GEN-LAST:event_jButton1ActionPerformed
